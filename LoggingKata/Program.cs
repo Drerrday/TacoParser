@@ -13,17 +13,41 @@ namespace LoggingKata
         static void Main(string[] args)
         {
             logger.LogInfo("Log initialized");
-
             var lines = File.ReadAllLines(csvPath);
-
             logger.LogInfo($"Lines: {lines[0]}");
 
             var parser = new TacoParser();
-
             var locations = lines.Select(parser.Parse).ToArray();
 
-            // TODO:  Find the two Taco Bells in Alabama that are the furthest from one another.
-            // HINT:  You'll need two nested forloops
+            var cordA = new GeoCoordinate();
+            var cordB = new GeoCoordinate();
+
+            ITrackable locA = null;
+            ITrackable locB = null;
+            double distance = 0.00;
+
+            for (int i = 0; i < locations.Length; i++)
+            {
+                cordA.Latitude = locations[i].Location.Latitude;
+                cordA.Longitude = locations[i].Location.Longitude;
+                //logger.LogInfo($"Location A: {cordA}");
+                for (int j = 0; j < locations.Length; j++)
+                {
+                    cordB.Latitude = locations[j].Location.Latitude;
+                    cordB.Longitude = locations[j].Location.Longitude;
+                    var newDistance = cordA.GetDistanceTo(cordB);
+                    //logger.LogInfo($"Location B: {cordB}");
+                    if (newDistance > distance)
+                    {
+                        logger.LogInfo($"Checking NEW DIST: {newDistance} Checking OLD DIST: {distance}");
+                        locA = locations[i];
+                        locB = locations[j];
+                        distance = newDistance;
+                    }
+                }
+                //logger.LogInfo($"{locA.Name} && {locB.Name}");
+            }
+            Console.WriteLine($"The tacobells farthest away from each other are: {locA.Name} && {locB.Name}");
         }
     }
 }
