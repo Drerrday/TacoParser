@@ -30,13 +30,12 @@ namespace LoggingKata
             {
                 cordA.Latitude = locations[i].Location.Latitude;
                 cordA.Longitude = locations[i].Location.Longitude;
-                //logger.LogInfo($"Location A: {cordA}");
+                logger.LogInfo($"Location A Cordinates: {cordA}");
                 for (int j = 0; j < locations.Length; j++)
                 {
                     cordB.Latitude = locations[j].Location.Latitude;
                     cordB.Longitude = locations[j].Location.Longitude;
                     var newDistance = cordA.GetDistanceTo(cordB);
-                    //logger.LogInfo($"Location B: {cordB}");
                     if (newDistance > distance)
                     {
                         logger.LogInfo($"Checking NEW DIST: {newDistance} Checking OLD DIST: {distance}");
@@ -45,7 +44,7 @@ namespace LoggingKata
                         distance = newDistance;
                     }
                 }
-                //logger.LogInfo($"{locA.Name} && {locB.Name}");
+                logger.LogInfo($"Location ADDED TO locB: {cordB}");
             }
             Console.WriteLine($"The tacobells farthest away from each other are: {locA.Name} && {locB.Name}");
         }
