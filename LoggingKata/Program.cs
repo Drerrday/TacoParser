@@ -25,6 +25,7 @@ namespace LoggingKata
             ITrackable locA = null;
             ITrackable locB = null;
             double distance = 0.00;
+            double newDistance = 0.00;
 
             for (int i = 0; i < locations.Length; i++)
             {
@@ -35,7 +36,7 @@ namespace LoggingKata
                 {
                     cordB.Latitude = locations[j].Location.Latitude;
                     cordB.Longitude = locations[j].Location.Longitude;
-                    var newDistance = cordA.GetDistanceTo(cordB);
+                    newDistance = cordA.GetDistanceTo(cordB);
                     if (newDistance > distance)
                     {
                         logger.LogInfo($"Checking NEW DIST: {newDistance} Checking OLD DIST: {distance}");
@@ -46,7 +47,8 @@ namespace LoggingKata
                 }
                 logger.LogInfo($"Location ADDED TO locB: {cordB}");
             }
-            Console.WriteLine($"The tacobells farthest away from each other are: {locA.Name} && {locB.Name}");
+            Console.WriteLine();
+            Console.WriteLine($"Tacobell A: {locA.Name} AND Tacobell B: {locB.Name}");
         }
     }
 }
