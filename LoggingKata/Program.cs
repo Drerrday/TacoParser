@@ -48,6 +48,7 @@ namespace LoggingKata
                 logger.LogInfo($"Location ADDED TO locB: {cordB}");
             }
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Tacobell A: {locA.Name} AND Tacobell B: {locB.Name}");
         }
     }

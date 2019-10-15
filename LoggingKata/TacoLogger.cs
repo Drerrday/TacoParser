@@ -21,6 +21,7 @@ namespace LoggingKata
 
         public void LogInfo(string log)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Info: {log}");
         }
 
