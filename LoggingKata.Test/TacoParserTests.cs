@@ -39,20 +39,20 @@ namespace LoggingKata.Test
         {
             // Arrange
             TacoParser parser = new TacoParser();
-            string a1 = "-84.283254,Taco Bell Alpharetta...";
-            string a2 = "34.206722,-86.873404";
-            string a3 = "Taco Bell Decatur...";
-            string a4 = "null ,-84.283254,Taco Bell Alpharetta...";
-            string a5 = "null, -84.283254 , null";
-            string a6 = "33.283584, -86.855317, ";
+            string tbell1 = "-84.283254,Taco Bell Alpharetta...";
+            string tbell2 = "34.206722,-86.873404";
+            string tbell3 = "Taco Bell Decatur...";
+            string tbell4 = "null ,-84.283254,Taco Bell Alpharetta...";
+            string tbell5 = "null, -84.283254 , null";
+            string tbell6 = "33.283584, -86.855317, ";
 
             // Act
-            var actual1 = parser.Parse(a1);
-            var actual2 = parser.Parse(a2);
-            var actual3 = parser.Parse(a3);
-            var actual4 = parser.Parse(a4);
-            var actual5 = parser.Parse(a5);
-            var actual6 = parser.Parse(a6);
+            var actual1 = parser.Parse(tbell1);
+            var actual2 = parser.Parse(tbell2);
+            var actual3 = parser.Parse(tbell3);
+            var actual4 = parser.Parse(tbell4);
+            var actual5 = parser.Parse(tbell5);
+            var actual6 = parser.Parse(tbell6);
 
             // Assert
             Assert.Equal(null, actual1);
